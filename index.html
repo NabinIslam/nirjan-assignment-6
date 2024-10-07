@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html class="scroll-smooth" lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -71,18 +71,20 @@
               point of using Lorem Ipsum is that it has a.
             </p>
           </div>
-          <button
-            class="bg-primary text-white px-6 py-3 rounded-lg font-medium"
+          <a href="#adopt_section">
+            <button
+              class="bg-primary text-white px-6 py-3 rounded-lg font-medium"
+            >
+              View More
+            </button></a
           >
-            View More
-          </button>
           <img src="/images/pet.webp" alt="Pet" />
         </div>
       </section>
 
       <!-- adopt section  -->
 
-      <section class="py-[50px]">
+      <section id="adopt_section" class="py-[50px]">
         <div class="container space-y-6">
           <h3 class="text-center font-black text-4xl">
             Adopt Your Best Friend
@@ -97,37 +99,9 @@
 
           <!-- category container  -->
           <div
+            id="category_container"
             class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-6"
-          >
-            <!-- category card  -->
-            <button
-              class="flex justify-center items-center border basis-1/4 gap-3 py-10 rounded-2xl"
-            >
-              <img class="size-[56px]" src="/images/dog.png" alt="Dog" />
-              <h5 class="font-black text-2xl">Dogs</h5>
-            </button>
-            <!-- category card  -->
-            <button
-              class="flex justify-center items-center border basis-1/4 gap-3 py-10 rounded-2xl"
-            >
-              <img class="size-[56px]" src="/images/dog.png" alt="Dog" />
-              <h5 class="font-black text-2xl">Dogs</h5>
-            </button>
-            <!-- category card  -->
-            <button
-              class="flex justify-center items-center border basis-1/4 gap-3 py-10 rounded-2xl"
-            >
-              <img class="size-[56px]" src="/images/dog.png" alt="Dog" />
-              <h5 class="font-black text-2xl">Dogs</h5>
-            </button>
-            <!-- category card  -->
-            <button
-              class="flex justify-center items-center border basis-1/4 gap-3 py-10 rounded-2xl"
-            >
-              <img class="size-[56px]" src="/images/dog.png" alt="Dog" />
-              <h5 class="font-black text-2xl">Dogs</h5>
-            </button>
-          </div>
+          ></div>
 
           <!-- best deals section  -->
 
@@ -144,6 +118,7 @@
             <div class="flex flex-col md:flex-row items-start gap-x-6 gap-y-6">
               <!-- pet cards container  -->
               <div
+                id="pets_container"
                 class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-x-6 gap-y-6"
               >
                 <!-- pet card  -->
@@ -337,5 +312,36 @@
         </div>
       </div>
     </footer>
+
+    <script src="/app.js"></script>
   </body>
 </html>
+
+<!-- category card  -->
+<!-- <button
+  class="flex justify-center items-center border basis-1/4 gap-3 py-10 rounded-2xl"
+>
+  <img class="size-[56px]" src="/images/dog.png" alt="Dog" />
+  <h5 class="font-black text-2xl">Dogs</h5>
+</button> -->
+<!-- category card  -->
+<!-- <button
+  class="flex justify-center items-center border basis-1/4 gap-3 py-10 rounded-2xl"
+>
+  <img class="size-[56px]" src="/images/dog.png" alt="Dog" />
+  <h5 class="font-black text-2xl">Dogs</h5>
+</button> -->
+<!-- category card  -->
+<!-- <button
+  class="flex justify-center items-center border basis-1/4 gap-3 py-10 rounded-2xl"
+>
+  <img class="size-[56px]" src="/images/dog.png" alt="Dog" />
+  <h5 class="font-black text-2xl">Dogs</h5>
+</button> -->
+<!-- category card  -->
+<!-- <button
+  class="flex justify-center items-center border basis-1/4 gap-3 py-10 rounded-2xl"
+>
+  <img class="size-[56px]" src="/images/dog.png" alt="Dog" />
+  <h5 class="font-black text-2xl">Dogs</h5>
+</button> -->
