@@ -73,7 +73,7 @@
           </div>
           <a href="#adopt_section">
             <button
-              class="bg-primary text-white px-6 py-3 rounded-lg font-medium"
+              class="bg-primary border-2 border-primary hover:bg-white text-white hover:text-primary duration-200 px-6 py-3 rounded-lg font-medium"
             >
               View More
             </button></a
@@ -109,7 +109,7 @@
             <div class="flex items-center justify-between">
               <h5 class="font-black text-2xl">Best Deal For You</h5>
               <button
-                class="bg-primary text-white px-6 py-3 rounded-lg font-bold"
+                class="bg-primary border-2 border-primary hover:bg-white text-white hover:text-primary duration-200 px-6 py-3 rounded-lg font-medium"
               >
                 Sort by Price
               </button>
@@ -119,12 +119,15 @@
               <!-- pet cards container  -->
               <div
                 id="pets_container"
-                class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-x-6 gap-y-6"
-              >
-               
-              </div>
+                class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-x-6 gap-y-6 basis-full lg:basis-[75%]"
+              ></div>
               <div
-                class="grid grid-cols-2 p-5 border rounded-2xl gap-x-5 gap-y-5"
+                id="no_pets_found"
+                class="basis-full lg:basis-[75%] hidden"
+              ></div>
+
+              <div
+                class="grid grid-cols-2 p-5 border rounded-2xl gap-x-5 gap-y-5 basis-full lg:basis-[25%]"
               >
                 <img src="/images/dog_grid.png" alt="" />
                 <img src="/images/dog_grid.png" alt="" />
@@ -179,7 +182,7 @@
               placeholder="Enter your email"
             />
             <button
-              class="w-full bg-primary text-white px-6 py-2 rounded-lg font-bold"
+              class="bg-primary border-2 border-primary hover:bg-white text-white hover:text-primary duration-200 px-6 py-3 rounded-lg font-medium"
             >
               Subscribe
             </button>
@@ -221,17 +224,8 @@
   <h5 class="font-black text-2xl">Dogs</h5>
 </button> -->
 
-
-
-
-
-
-
-
-
-
- <!-- pet card  -->
- <!-- <div class="border p-5 rounded-2xl space-y-5">
+<!-- pet card  -->
+<!-- <div class="border p-5 rounded-2xl space-y-5">
   <img src="/images/card_img.png" alt="Pet Photo" />
   <h5 class="text-2xl font-bold">Mister Tartosn</h5>
 
