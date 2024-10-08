@@ -50,7 +50,6 @@ function displayCategories(categoryData) {
 
 function displayAllPets(petsData) {
   const pets = petsData.pets || petsData.data;
-  // const categoryWisePets = petsData.data;
 
   const petsContainer = document.getElementById("pets_container");
   const petNotFoundContainer = document.getElementById("no_pets_found");
@@ -98,7 +97,7 @@ function displayAllPets(petsData) {
                         <hr />
       
                         <div class="flex items-center justify-between">
-                          <button class="like_btn border-2 border-primary hover:bg-white text-white hover:text-primary duration-200 px-3 py-1 rounded-lg font-medium">
+                          <button class="like_btn border-2 border-primary hover:border-gray-300 hover:bg-white text-white hover:text-primary duration-200 px-3 py-1 rounded-lg font-medium">
                             <img class="size-6 " src="/images/thumbsup.png" alt="" />
                           </button>
                           <button
@@ -124,29 +123,24 @@ function displayAllPets(petsData) {
         const cardWrapper = this.closest(".card_wrapper");
         const image = cardWrapper.querySelector(".card_image");
 
-        // Clone the image to add it to the grid
         const clonedImage = image.cloneNode(true);
 
-        // Add the cloned image to the grid container
         document.querySelector(".grid_container").appendChild(clonedImage);
       });
     });
 
-
     const detailBtn = document.querySelectorAll(".detail_btn");
 
     detailBtn.forEach(button => {
-      button.addEventListener("click", function () {
-        
-      })
-    })
+      button.addEventListener("click", function () {});
+    });
   } else {
     petsContainer.style.display = "none";
 
     petNotFoundContainer.style.display = "block";
 
     petNotFoundContainer.innerHTML = `
-              <div class='space-y-5'>
+              <div class='space-y-5 py-24'>
              <div> <img class="size-[160px] mx-auto" src="/images/n-a.png" alt="No Pets Found" /></div>
                   <h2 class="text-center text-4xl font-black">No Information Available</h2>
                   <p class="text-center text-sm">It is a long established fact that a reader will be distracted by the readable content of a page when looking at <br>
