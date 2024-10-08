@@ -1,6 +1,8 @@
-fetch("https://openapi.programming-hero.com/api/peddy/categories")
-  .then(response => response.json())
-  .then(categoryData => displayCategories(categoryData));
+function loadCategories() {
+  fetch("https://openapi.programming-hero.com/api/peddy/categories")
+    .then(response => response.json())
+    .then(categoryData => displayCategories(categoryData));
+}
 
 function displayCategories(categoryData) {
   const categories = categoryData.categories;
@@ -30,14 +32,17 @@ function displayCategories(categoryData) {
   }
 }
 
-fetch("https://openapi.programming-hero.com/api/peddy/pets")
-  .then(response => response.json())
-  .then(petsData => displayCategories(petsData));
+function loadPets() {
+  fetch("https://openapi.programming-hero.com/api/peddy/pets")
+    .then(response => response.json())
+    .then(petsData => displayAllPets(petsData));
+}
 
 function displayAllPets(petsData) {
-  const pets = petsData.pets;
+  const pets = petsData?.pets;
+  console.log("🚀 ~ displayAllPets ~ pets:", pets);
 
-  const petContainer = document.getElementById("pets_container");
+  const petsContainer = document.getElementById("pets_container");
 
   for (const pet of pets) {
     const div = document.createElement("div");
@@ -45,25 +50,25 @@ function displayAllPets(petsData) {
     div.classList.add("border", "p-5", "rounded-2xl", "space-y-5");
 
     div.innerHTML = `
-                  <img src="/images/card_img.png" alt="Pet Photo" />
-                  <h5 class="text-2xl font-bold">Mister Tartosn</h5>
+                  <img class="w-full rounded-lg" src=${pet.image} alt="Pet Photo" />
+                  <h5 class="text-2xl font-bold">${pet.pet_name}</h5>
 
                   <div class="space-y-2">
                     <div class="flex items-center justify-start gap-2">
-                      <img class="size-5" src=${pet.image} alt="" />
+                      <img class="size-5" src="/images/breed_icon.png" alt="" />
                       <span class="font-semibold">Breed: ${pet.breed}</span>
                     </div>
                     <div class="flex items-center justify-start gap-2">
-                      <img class="size-5" src="/images/breed_icon.png" alt="" />
-                      <span class="font-semibold">Breed: Golder Retriever</span>
+                      <img class="size-5" src="/images/calendar_icon.png" alt="" />
+                      <span class="font-semibold">Birth: ${pet.date_of_birth}</span>
                     </div>
                     <div class="flex items-center justify-start gap-2">
-                      <img class="size-5" src="/images/breed_icon.png" alt="" />
-                      <span class="font-semibold">Breed: Golder Retriever</span>
+                      <img class="size-5" src="/images/gender_icon.png" alt="" />
+                      <span class="font-semibold">Gender: ${pet.gender}</span>
                     </div>
                     <div class="flex items-center justify-start gap-2">
-                      <img class="size-5" src="/images/breed_icon.png" alt="" />
-                      <span class="font-semibold">Breed: Golder Retriever</span>
+                      <img class="size-5" src="/images/currency_icon.png" alt="" />
+                      <span class="font-semibold">Price: ${pet.price}</span>
                     </div>
                   </div>
 
@@ -86,6 +91,9 @@ function displayAllPets(petsData) {
                   </div>
               `;
 
-    categoryContainer.appendChild(div);
+    petsContainer.appendChild(div);
   }
 }
+
+loadCategories();
+loadPets();
