@@ -53,69 +53,96 @@ function displayAllPets(petsData) {
   // const categoryWisePets = petsData.data;
 
   const petsContainer = document.getElementById("pets_container");
+  const petNotFoundContainer = document.getElementById("no_pets_found");
 
   petsContainer.innerHTML = "";
 
   if (Array.isArray(pets) && pets.length > 0) {
+    petsContainer.style.display = "grid";
+    petNotFoundContainer.style.display = "none";
+
     for (const pet of pets) {
       const div = document.createElement("div");
 
-      div.classList.add("border", "p-5", "rounded-2xl", "space-y-5");
+      div.classList.add(
+        "card_wrapper",
+        "border",
+        "p-5",
+        "rounded-2xl",
+        "space-y-5"
+      );
 
       div.innerHTML = `
-                      <img class="w-full rounded-lg" src=${pet.image} alt="Pet Photo" />
-                      <h5 class="text-2xl font-bold">${pet.pet_name}</h5>
-    
-                      <div class="space-y-2">
-                        <div class="flex items-center justify-start gap-2">
-                          <img class="size-5" src="/images/breed_icon.png" alt="" />
-                          <span class="font-semibold">Breed: ${pet.breed}</span>
+                        <img class="w-full rounded-lg card_image" src=${pet.image} alt="Pet Photo" />
+                        <h5 class="text-2xl font-bold">${pet.pet_name}</h5>
+      
+                        <div class="space-y-2">
+                          <div class="flex items-center justify-start gap-2">
+                            <img class="size-5" src="/images/breed_icon.png" alt="" />
+                            <span class="font-semibold">Breed: ${pet.breed}</span>
+                          </div>
+                          <div class="flex items-center justify-start gap-2">
+                            <img class="size-5" src="/images/calendar_icon.png" alt="" />
+                            <span class="font-semibold">Birth: ${pet.date_of_birth}</span>
+                          </div>
+                          <div class="flex items-center justify-start gap-2">
+                            <img class="size-5" src="/images/gender_icon.png" alt="" />
+                            <span class="font-semibold">Gender: ${pet.gender}</span>
+                          </div>
+                          <div class="flex items-center justify-start gap-2">
+                            <img class="size-5" src="/images/currency_icon.png" alt="" />
+                            <span class="font-semibold">Price: ${pet.price}</span>
+                          </div>
                         </div>
-                        <div class="flex items-center justify-start gap-2">
-                          <img class="size-5" src="/images/calendar_icon.png" alt="" />
-                          <span class="font-semibold">Birth: ${pet.date_of}</span>
+      
+                        <hr />
+      
+                        <div class="flex items-center justify-between">
+                          <button class="like_btn border-2 border-primary hover:bg-white text-white hover:text-primary duration-200 px-3 py-1 rounded-lg font-medium">
+                            <img class="size-6 " src="/images/thumbsup.png" alt="" />
+                          </button>
+                          <button
+                            class="bg-primary border-2 border-primary hover:bg-white text-white hover:text-primary duration-200 px-3 py-1 rounded-lg font-medium"
+                          >
+                            Adopt
+                          </button>
+                          <button
+                            class="bg-primary border-2 border-primary hover:bg-white text-white hover:text-primary duration-200 px-3 py-1 rounded-lg font-medium"
+                          >
+                            Details
+                          </button>
                         </div>
-                        <div class="flex items-center justify-start gap-2">
-                          <img class="size-5" src="/images/gender_icon.png" alt="" />
-                          <span class="font-semibold">Gender: ${pet.gender}</span>
-                        </div>
-                        <div class="flex items-center justify-start gap-2">
-                          <img class="size-5" src="/images/currency_icon.png" alt="" />
-                          <span class="font-semibold">Price: ${pet.price}</span>
-                        </div>
-                      </div>
-    
-                      <hr />
-    
-                      <div class="flex items-center justify-between">
-                        <button class="block px-3 py-1 rounded-lg border-2">
-                          <img class="size-7" src="/images/thumbsup.png" alt="" />
-                        </button>
-                        <button
-                           class="bg-primary border-2 border-primary hover:bg-white text-white hover:text-primary duration-200 px-6 py-3 rounded-lg font-medium"
-                        >
-                          Adopt
-                        </button>
-                        <button
-                           class="bg-primary border-2 border-primary hover:bg-white text-white hover:text-primary duration-200 px-6 py-3 rounded-lg font-medium"
-                        >
-                          Details
-                        </button>
-                      </div>
                   `;
 
       petsContainer.appendChild(div);
     }
+
+    const likeButtons = document.querySelectorAll(".like_btn");
+
+    likeButtons.forEach(button => {
+      button.addEventListener("click", function () {
+        const cardWrapper = this.closest(".card_wrapper");
+        const image = cardWrapper.querySelector(".card_image");
+
+        // Clone the image to add it to the grid
+        const clonedImage = image.cloneNode(true);
+
+        // Add the cloned image to the grid container
+        document.querySelector(".grid_container").appendChild(clonedImage);
+      });
+    });
   } else {
     petsContainer.style.display = "none";
-    
-    const petNotFoundContainer = document.getElementById("no_pets_found");
 
     petNotFoundContainer.style.display = "block";
 
     petNotFoundContainer.innerHTML = `
-                  <h2 class="text-center text-4xl font-bold">No Pets Found</h2>
-                  <p class="text-center text-lg">Please check the category or try searching again.</p>
+              <div class='space-y-5'>
+             <div> <img class="size-[160px] mx-auto" src="/images/n-a.png" alt="No Pets Found" /></div>
+                  <h2 class="text-center text-4xl font-black">No Information Available</h2>
+                  <p class="text-center text-sm">It is a long established fact that a reader will be distracted by the readable content of a page when looking at <br>
+                    its layout. The point of using Lorem Ipsum is that it has a.</p>
+              </div>    
               `;
   }
 }
