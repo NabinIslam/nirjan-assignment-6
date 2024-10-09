@@ -21,14 +21,16 @@ function displayCategories(categoryData) {
 
   const categoryContainer = document.getElementById("category_container");
 
+  let activeButton = null;
+
   for (const category of categories) {
     const button = document.createElement("button");
 
     button.classList.add(
+      "border",
       "flex",
       "justify-center",
       "items-center",
-      "border",
       "basis-1/4",
       "gap-3",
       "py-10",
@@ -41,6 +43,13 @@ function displayCategories(categoryData) {
               `;
 
     button.addEventListener("click", function () {
+      if (activeButton) {
+        activeButton.classList.add("border-[#ddd]");
+      }
+
+      button.classList.add("border-primary");
+      activeButton = button;
+
       loadPetsByCategory(category.category);
     });
 
@@ -114,6 +123,27 @@ function displayAllPets(petsData) {
                   `;
 
       petsContainer.appendChild(div);
+
+      const detailBtn = document.querySelectorAll(".detail_btn");
+
+      detailBtn.forEach(button => {
+        button.addEventListener("click", function () {
+          const modal = document.getElementById("my_modal_1");
+
+          const petPhoto = document.getElementById("pet_photo");
+          const petName = document.getElementById("pet_name");
+          const petBreed = document.getElementById("pet_breed");
+          const petBirth = document.getElementById("pet_birth");
+          const petGender = document.getElementById("pet_gender");
+          const petPrice = document.getElementById("pet_price");
+          const petStatus = document.getElementById("pet_status");
+
+          petPhoto.src = pet.img;
+          petName.innerText = pet.pet_name;
+
+          modal.showModal();
+        });
+      });
     }
 
     const likeButtons = document.querySelectorAll(".like_btn");
@@ -127,12 +157,6 @@ function displayAllPets(petsData) {
 
         document.querySelector(".grid_container").appendChild(clonedImage);
       });
-    });
-
-    const detailBtn = document.querySelectorAll(".detail_btn");
-
-    detailBtn.forEach(button => {
-      button.addEventListener("click", function () {});
     });
   } else {
     petsContainer.style.display = "none";
