@@ -7,13 +7,13 @@ function loadCategories() {
 function loadPets() {
   fetch("https://openapi.programming-hero.com/api/peddy/pets")
     .then(response => response.json())
-    .then(petsData => displayAllPets(petsData));
+    .then(petsData => displayAllPets(petsData.pets));
 }
 
 function loadPetsByCategory(category) {
   fetch(`https://openapi.programming-hero.com/api/peddy/category/${category}`)
     .then(response => response.json())
-    .then(petsData => displayAllPets(petsData));
+    .then(petsData => displayAllPets(petsData.data));
 }
 
 function displayCategories(categoryData) {
@@ -57,9 +57,7 @@ function displayCategories(categoryData) {
   }
 }
 
-function displayAllPets(petsData) {
-  const pets = petsData.pets || petsData.data;
-
+function displayAllPets(pets) {
   const petsContainer = document.getElementById("pets_container");
   const petNotFoundContainer = document.getElementById("no_pets_found");
 
@@ -176,3 +174,15 @@ function displayAllPets(petsData) {
 
 loadCategories();
 loadPets();
+
+document.getElementById("sort_by_price").addEventListener("click", function () {
+  fetch("https://openapi.programming-hero.com/api/peddy/pets")
+    .then(response => response.json())
+    .then(petsData => {
+      const pets = petsData.pets;
+
+      pets.sort((a, b) => b.price - a.price);
+
+      displayAllPets(pets);
+    });
+});
