@@ -79,25 +79,37 @@ function displayAllPets(pets) {
       );
 
       div.innerHTML = `
-                        <img class="w-full rounded-lg card_image" src=${pet.image} alt="Pet Photo" />
-                        <h5 class="text-2xl font-bold">${pet.pet_name}</h5>
+                        <img class="w-full rounded-lg card_image" src=${
+                          pet.image ? pet.image : "N/A"
+                        } alt="Pet Photo" />
+                        <h5 class="text-2xl font-bold">${
+                          pet.pet_name ? pet.pet_name : "N/A"
+                        }</h5>
       
                         <div class="space-y-2">
                           <div class="flex items-center justify-start gap-2">
                             <img class="size-5" src="/images/breed_icon.png" alt="" />
-                            <span class="font-semibold">Breed: ${pet.breed}</span>
+                            <span class="font-semibold">Breed: ${
+                              pet.breed ? pet.breed : "N/A"
+                            }</span>
                           </div>
                           <div class="flex items-center justify-start gap-2">
                             <img class="size-5" src="/images/calendar_icon.png" alt="" />
-                            <span class="font-semibold">Birth: ${pet.date_of_birth}</span>
+                            <span class="font-semibold">Birth: ${
+                              pet.date_of_birth ? pet.date_of_birth : "N/A"
+                            }</span>
                           </div>
                           <div class="flex items-center justify-start gap-2">
                             <img class="size-5" src="/images/gender_icon.png" alt="" />
-                            <span class="font-semibold">Gender: ${pet.gender}</span>
+                            <span class="font-semibold">Gender: ${
+                              pet.gender ? pet.gender : "N/A"
+                            }</span>
                           </div>
                           <div class="flex items-center justify-start gap-2">
                             <img class="size-5" src="/images/currency_icon.png" alt="" />
-                            <span class="font-semibold">Price: ${pet.price}</span>
+                            <span class="font-semibold">Price: ${
+                              pet.price ? pet.price : "N/A"
+                            }</span>
                           </div>
                         </div>
       
