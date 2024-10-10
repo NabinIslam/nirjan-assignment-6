@@ -11,9 +11,17 @@ function loadPets() {
 }
 
 function loadPetsByCategory(category) {
-  fetch(`https://openapi.programming-hero.com/api/peddy/category/${category}`)
-    .then(response => response.json())
-    .then(petsData => displayAllPets(petsData.data));
+  showLoading();
+
+  setTimeout(() => {
+    fetch(`https://openapi.programming-hero.com/api/peddy/category/${category}`)
+      .then(response => response.json())
+      .then(petsData => {
+        hideLoading();
+
+        displayAllPets(petsData.data);
+      });
+  }, 2000);
 }
 
 function displayCategories(categoryData) {
@@ -210,6 +218,23 @@ function displayAllPets(pets) {
               </div>    
               `;
   }
+}
+
+// Show loading indicator
+function showLoading() {
+  const petsContainer = document.getElementById("pets_container");
+  petsContainer.style.display = "none";
+
+  const loading = document.getElementById("loading");
+  loading.classList.remove("hidden");
+}
+
+// Hide loading indicator
+function hideLoading() {
+  const loading = document.getElementById("loading");
+  loading.classList.add("hidden");
+  const petsContainer = document.getElementById("pets_container");
+  petsContainer.style.display = "block";
 }
 
 loadCategories();
