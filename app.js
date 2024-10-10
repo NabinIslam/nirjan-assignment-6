@@ -253,7 +253,6 @@ function displayAllPets(pets) {
   }
 }
 
-// Show loading indicator
 function showLoading() {
   const petsContainer = document.getElementById("pets_container");
   petsContainer.style.display = "none";
@@ -265,7 +264,6 @@ function showLoading() {
   loading.classList.remove("hidden");
 }
 
-// Hide loading indicator
 function hideLoading() {
   const loading = document.getElementById("loading");
   loading.classList.add("hidden");
