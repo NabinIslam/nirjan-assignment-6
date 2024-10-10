@@ -108,7 +108,7 @@ function displayAllPets(pets) {
                             <img class="size-6 " src="/images/thumbsup.png" alt="" />
                           </button>
                           <button
-                            class="bg-primary border-2 border-primary hover:bg-white text-white hover:text-primary duration-200 px-3 py-1 rounded-lg font-medium"
+                            class="adopt_btn bg-primary border-2 border-primary hover:bg-white text-white hover:text-primary duration-200 px-3 py-1 rounded-lg font-medium"
                           >
                             Adopt
                           </button>
@@ -154,6 +154,32 @@ function displayAllPets(pets) {
         const clonedImage = image.cloneNode(true);
 
         document.querySelector(".grid_container").appendChild(clonedImage);
+      });
+    });
+
+    const adoptButton = document.querySelectorAll(".adopt_btn");
+
+    adoptButton.forEach(button => {
+      button.addEventListener("click", function () {
+        let modal = document.getElementById("myModal");
+        let counterElement = document.getElementById("counter");
+        let counter = 3;
+
+        modal.classList.remove("hidden");
+
+        counterElement.innerText = counter;
+
+        let countdown = setInterval(function () {
+          counter--;
+          counterElement.innerText = counter;
+
+          if (counter === 0) {
+            clearInterval(countdown);
+            setTimeout(function () {
+              modal.classList.add("hidden");
+            }, 1000);
+          }
+        }, 1000);
       });
     });
   } else {
