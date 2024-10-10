@@ -18,4 +18,4 @@ This project is about adopting pets. Choosing favorite pets and adopt them.
 
 ## Live
 
-Insert gif or link to demo
+https://willowy-halva-68d9f9.netlify.app/
