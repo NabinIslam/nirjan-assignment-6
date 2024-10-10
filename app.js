@@ -144,25 +144,58 @@ function displayAllPets(pets) {
 
       petsContainer.appendChild(div);
 
-      const detailBtn = document.querySelectorAll(".detail_btn");
+      const detailBtn = div.querySelector(".detail_btn");
 
-      detailBtn.forEach(button => {
-        button.addEventListener("click", function () {
-          const modal = document.getElementById("my_modal_1");
+      detailBtn.addEventListener("click", function () {
+        const modal = document.getElementById("my_modal_1");
+        modal.showModal();
 
-          const petPhoto = document.getElementById("pet_photo");
-          const petName = document.getElementById("pet_name");
-          const petBreed = document.getElementById("pet_breed");
-          const petBirth = document.getElementById("pet_birth");
-          const petGender = document.getElementById("pet_gender");
-          const petPrice = document.getElementById("pet_price");
-          const petStatus = document.getElementById("pet_status");
+        const modalContent = document.getElementById("modal_content");
 
-          petPhoto.src = pet.img;
-          petName.innerText = pet.pet_name;
-
-          modal.showModal();
-        });
+        modalContent.innerHTML = `
+          <img class='w-full h-auto' src=${pet.image} />
+          <h3 class="text-3xl font-extrabold my-3">${
+            pet.pet_name ? pet.pet_name : "Not Available"
+          }</h3>
+          <div class="grid grid-cols-2">
+            <div class="flex items-center justify-start gap-2">
+                            <img class="size-5" src="/images/breed_icon.png" alt="" />
+                            <span class="font-semibold">Breed: ${
+                              pet.breed ? pet.breed : "Not Available"
+                            }</span>
+                          </div>
+            <div class="flex items-center justify-start gap-2">
+                            <img class="size-5" src="/images/calendar_icon.png" alt="" />
+                            <span class="font-semibold">Birth: ${
+                              pet.date_of_birth
+                                ? pet.date_of_birth
+                                : "Not Available"
+                            }</span>
+                          </div>
+                           <div class="flex items-center justify-start gap-2">
+                            <img class="size-5" src="/images/gender_icon.png" alt="" />
+                            <span class="font-semibold">Gender: ${
+                              pet.gender ? pet.gender : "Not Available"
+                            }</span>
+                          </div>
+                           <div class="flex items-center justify-start gap-2">
+                            <img class="size-5" src="/images/currency_icon.png" alt="" />
+                            <span class="font-semibold">Price: ${
+                              pet.price ? pet.price : "Not Available"
+                            }</span>
+                          </div>
+                           <div class="flex items-center justify-start gap-2">
+                            <img class="size-5" src="/images/gender_icon.png" alt="" />
+                            <span class="font-semibold">Vaccinated status: ${
+                              pet.vaccinated_status
+                                ? pet.vaccinated_status
+                                : "Not Available"
+                            }</span>
+                          </div>
+          </div>
+          <h6 class='text-xl font-bold mt-3 mb-2'>Details Information</h6>
+          <p>${pet.pet_details ? pet.pet_details : "Not Available"}</p>
+        `;
       });
     }
 
@@ -224,6 +257,9 @@ function displayAllPets(pets) {
 function showLoading() {
   const petsContainer = document.getElementById("pets_container");
   petsContainer.style.display = "none";
+
+  const petNotFoundContainer = document.getElementById("no_pets_found");
+  petNotFoundContainer.style.display = "none";
 
   const loading = document.getElementById("loading");
   loading.classList.remove("hidden");
